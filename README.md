@@ -156,7 +156,7 @@ Et tester ce dernier dans un browser:
 Licences - remerciements
 ------------------------
 
-Ce conteneur est construit à partir du conteneur tutum/lamp: https://raw.githubusercontent.com/tutumcloud/tutum-docker-lamp
+Ce conteneur est construit à partir du conteneur tutum/lamp: https://github.com/tutumcloud/tutum-docker-lamp
 
 L'application Badnet est disponible en téléchargement sur le site: http://www.badnet.org
 
