@@ -8,8 +8,10 @@ if [ -d "$previous" ]; then
 	rm -Rf $previous
 fi
 
-echo "Decompresse l'archive de la nouvelle version de Badnet" 
-unzip -qq /badnet/archive/badnet*.zip -d /badnet
+BADNET_URL=${BADNET_URL:="http://www.badnet.org/badnet/src/index.php?bnAction=65542&file=badnet_v2.9r2.zip&ajax=false"}
+echo "Telecharge l'archive de la nouvelle version de Badnet $BADNET_URL" 
+wget -O /badnet/archive/badnet.zip "$BADNET_URL"
+unzip -qq /badnet/archive/badnet.zip -d /badnet
 
 latest=`dirname /badnet/badnet*/index.php`
 echo "Cree un lien symbolique vers la nouvelle version Badnet: $latest"
