@@ -13,16 +13,7 @@ RUN mkdir -p /badnet/archive && mkdir -p /badnet/scripts
 ADD scripts/*.sh /badnet/scripts/
 RUN chmod +x /badnet/scripts/*.sh
 
-# install Badnet web site
-# a) from zip archive previously downloaded
-ADD resources/*.zip /badnet/archive/
-
-# b) ideally, retrieve badnet from a git repository
-# git clone https://github.com/username/customapp.git /badnet
-
-# c) alternativelly download lastest version of badnet from badnet.org
-# RUN wget -O /badnet/archive/badnet.zip http://www.badnet.org/badnet/src/index.php?bnAction=65542&file=badnet_v2.9r2.zip&ajax=false
-
+ENV BADNET_URL http://www.badnet.org/badnet/src/index.php?bnAction=65542&file=badnet_v2.9r2.zip&ajax=false
 RUN /badnet/scripts/install-badnet.sh
 
 # expose Http and MySql ports for external connection
