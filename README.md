@@ -131,7 +131,7 @@ Dans un nouveau répertoire, stocker le fichier zip de l'application badnet, et 
 
 	FROM jdesmazieres/badnet:latest
 	RUN rm -fr /badnet/archive/badnet*.zip
-	ADD *.zip /badnet/archive/
+	ENV BADNET_URL http://www.badnet.org/.....
 	RUN /badnet/scripts/install-badnet.sh
 	EXPOSE 80 3306
 	CMD ["/run.sh"]
