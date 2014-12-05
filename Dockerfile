@@ -26,7 +26,7 @@ ADD resources/*.zip /badnet/archive/
 RUN /badnet/scripts/install-badnet.sh
 
 # expose Http and MySql ports for external connection
-EXPOSE 80 8080 3306
+EXPOSE 80 3306
 
 CMD ["/run.sh"]
 
