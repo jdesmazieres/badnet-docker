@@ -24,13 +24,9 @@ Si vous voulez pouvoir accéder à la base MySql en dehors du conteneur, binder 
 
 	docker run -d -p 80:80 -p 3306:3306 jdesmazieres/badnet
 
-ou plus simplement
-
-	docker run -d -P jdesmazieres/badnet
-
 Afin de pouvoir faciliter l'accès à votre conteneur, il est pratique de le nommer
 
-	docker run -d -P -name mybadnet jdesmazieres/badnet
+	docker run -d -p 80:80 -name mybadnet jdesmazieres/badnet
 
 Il sera ainsi plus aisé d'interagir avec ce dernier
 
@@ -80,12 +76,12 @@ Configuration avancée du conteneur
 
 Lors de la création de l'image docker, la base MySql a été configurée avec un user root sans mot de passe, mais avec un accès local uniquement.
 Par conséquent:
-* lors de la configuration Badnet, utliser le user root et laisser le mot de passe à vide (laisser les options par défaut sur les deux premiers écrans)
+* lors de la configuration Badnet, utiliser le user root et laisser le mot de passe à vide (laisser les options par défaut sur les deux premiers écrans)
 * pour un accès externe à la base MySql, utiliser le user admin, dont le mot de passe est précisé lors de l'exécution du conteneur (docker run)
 
 Pour récupérer le mot de passe du l'utilisateur admin (celui-ci est généré aléatoirement lors de la création du conteneur), utiliser la commande:
 
-	docker logs $CONTAINER_ID
+	docker logs badnet
 
 La commande vous affichera une sortie du genre:
 
@@ -115,7 +111,7 @@ Si vous voulez forcer un mot de passe pour le compte d'administration de MySql p
 un aléatoirement, vous pouvez définir la variable d'environnement `MYSQL_PASS` avec votre mot de passe
 spécifique lors de l'exécution du conteneur:
 
-	docker run -d -P -e MYSQL_PASS="mypass" jdesmazieres/badnet
+	docker run -d -p 80:80 -e MYSQL_PASS="mypass" jdesmazieres/badnet
 
 Vous pouvez alors tester votre nouveau mot de passe d'administration:
 
@@ -146,7 +142,7 @@ Ensuite, builder le `Dockerfile`:
 
 Et crer un conteneur:
 
-	docker run -d -P --name mynewbadnet my-badnet
+	docker run -d -p 80:80 --name mynewbadnet my-badnet
 
 Et tester ce dernier dans un browser:
 
