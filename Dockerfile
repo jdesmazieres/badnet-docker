@@ -13,8 +13,8 @@ RUN mkdir -p /badnet/archive && mkdir -p /badnet/scripts
 ADD scripts/*.sh /badnet/scripts/
 RUN chmod +x /badnet/scripts/*.sh
 
-ENV BADNET_URL http://www.badnet.org/badnet/src/index.php?bnAction=65542&file=badnet_v2.9r2.zip&ajax=false
-RUN /badnet/scripts/install-badnet.sh
+ENV BADNET_URL http://www.badnet.org/badnet/src/index.php?bnAction=65542&file=badnet_v2.9r3.zip&ajax=false
+RUN /badnet/scripts/install-badnet.sh 2>&1 | tee /badnet/scripts/install-badnet.log
 
 # expose Http and MySql ports for external connection
 EXPOSE 80 3306
